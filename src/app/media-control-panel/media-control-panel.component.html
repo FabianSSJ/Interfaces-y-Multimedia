@@ -1,0 +1,113 @@
+<div class="media-container">
+  <h2>🎵 Media Player (Signals)</h2>
+
+  <div class="controls-row">
+    <button (click)="togglePlay()" class="btn-primary">
+      {{ isPlaying() ? '⏸ Pause' : '▶ Play' }}
+    </button>
+
+    <span class="time-display">
+      {{ displayTime() }}
+    </span>
+  </div>
+
+  <div class="volume-row">
+    <button (click)="toggleMute()" class="btn-icon" [title]="volume() === 0 ? 'Unmute' : 'Mute'">
+      {{ volumeIcon() }}
+    </button>
+
+    <input 
+      type="range" 
+      min="0" 
+      max="100" 
+      [value]="volume()" 
+      (input)="onVolumeChange($event)"
+      class="volume-slider"
+    >
+    
+    <span class="volume-text">{{ volume() }}%</span>
+  </div>
+</div>
+
+<style>
+  .media-container {
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    background: #f9f9f9;
+    font-family: sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  h2 { margin-top: 0; text-align: center; color: #333; }
+
+  .controls-row, .volume-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    min-width: 80px;
+    transition: background-color 0.2s;
+  }
+
+  .btn-primary:hover { background-color: #3700b3; }
+
+  .btn-icon {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    /* Fijamos el tamaño para evitar desbordes */
+    width: 40px;
+    height: 40px;
+    min-width: 40px; /* Importante para que Flexbox no lo aplaste */
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Reseteo de padding */
+    transition: background-color 0.2s;
+  }
+  
+  .btn-icon:hover { background-color: #eee; }
+
+  .time-display {
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: #222;
+    color: #0f0;
+    padding: 5px 10px;
+    border-radius: 4px;
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .volume-slider {
+    flex-grow: 1;
+    cursor: pointer;
+    height: 6px;
+    border-radius: 3px;
+    accent-color: #6200ea; /* Color moderno para el slider */
+  }
+
+  .volume-text {
+    font-size: 0.9rem;
+    color: #666;
+    width: 45px;
+    text-align: right;
+    font-variant-numeric: tabular-nums; /* Evita que los números salten al cambiar ancho */
+  }
+</style>
