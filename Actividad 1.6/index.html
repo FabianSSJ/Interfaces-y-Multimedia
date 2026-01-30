@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level UI | Fabián</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="motion-library.css">
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <header>
+        <div class="badge">UI DESIGN 2.0</div>
+        <h1>Motion System <span class="text-gradient">Pro</span></h1>
+        <p>Experiencia interactiva con Glassmorphism y Neón</p>
+    </header>
+
+    <main class="grid-container">
+        
+        <div class="glass-card tilt-card delay-1">
+            <div class="card-icon">⚡</div>
+            <h3>Acción Dinámica</h3>
+            <p>Botón con estado de carga y feedback háptico visual.</p>
+            
+            <button id="actionBtn" class="btn-neon">
+                <span>Ejecutar Acción</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+
+        <div class="glass-card tilt-card delay-2">
+            <div class="card-icon">⏳</div>
+            <h3>Procesando Datos</h3>
+            <p>Loader circular con gradiente cónico animado.</p>
+            
+            <div class="loader-wrapper">
+                <div class="spinner-neon"></div>
+            </div>
+        </div>
+
+        <div class="glass-card tilt-card delay-3">
+            <div class="card-icon">🚀</div>
+            <h3>Notificación</h3>
+            <p>Alertas estilizadas con transparencia.</p>
+            
+            <div class="notification-glass">
+                <div class="dot"></div>
+                <span>Sistema actualizado correctamente.</span>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
