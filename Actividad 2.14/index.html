@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eco-Interactico XR | Actividad 2.14</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.3.2/dist/aframe-environment-component.min.js"></script>
+    <script src="js/components.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a-scene
+      renderer="antialias: true; colorManagement: true; sortObjects: true;"
+      cursor="rayOrigin: mouse"
+      raycaster="objects: .interactable"
+      accessibility-manager
+    >
+      <!-- Assets -->
+      <a-assets>
+        <!-- Here we will add the optimized .glb models later -->
+        <a-asset-item
+          id="ewaste-model"
+          src="https://cdn.aframe.io/examples/ar/models/transformer/scene.gltf"
+        ></a-asset-item>
+      </a-assets>
+
+        <!-- Simple Background -->
+        <a-sky color="#ECECEC"></a-sky>
+        <a-entity geometry="primitive: plane; width: 100; height: 100" rotation="-90 0 0" material="color: #7BC8A4; src: https://cdn.aframe.io/a-grid-1010.png; repeat: 100 100"></a-entity>
+
+        <!-- Basic Interactive Object (E-waste zone) - Ordered Figures -->
+        <a-entity id="impact-zone" 
+            class="interactable"
+            geometry="primitive: box; width: 4; height: 0.1; depth: 2"
+            material="color: #4a4a4a; opacity: 0.5"
+            position="0 0.05 -4"
+            gaze-timer="duration: 10000">
+            
+            <a-entity id="ewaste-visual" position="0 0.5 0">
+                <a-entity class="interactable" hover-glow gaze-proxy geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5" material="color: #555" position="-1.2 0 0"></a-entity>
+                <a-entity class="interactable" hover-glow gaze-proxy geometry="primitive: cylinder; radius: 0.2; height: 0.8" material="color: #777" position="-0.4 0 0"></a-entity>
+                <a-entity class="interactable" hover-glow gaze-proxy geometry="primitive: sphere; radius: 0.3" material="color: #444" position="0.4 0 0"></a-entity>
+                <a-entity class="interactable" hover-glow gaze-proxy geometry="primitive: cone; radiusBottom: 0.3; height: 0.6" material="color: #666" position="1.2 0 0"></a-entity>
+            </a-entity>
+
+        <!-- Organic Contextual Info (Hidden by default) -->
+        <a-entity
+          id="info-panel"
+          visible="false"
+          position="0 2 0"
+          text="value: CUIDADO: Este punto de acumulacion de e-waste esta afectando el suelo local.; align: center; width: 3; color: white"
+          geometry="primitive: plane; width: 3.2; height: 0.8"
+          material="color: #000; opacity: 0.8; transparent: true"
+        >
+        </a-entity>
+      </a-entity>
+
+      <!-- Dynamic Lighting -->
+      <a-entity
+        id="global-light"
+        light="type: ambient; intensity: 0.6; color: #FFF"
+        light-controller="role: global"
+      ></a-entity>
+      <a-entity
+        id="focus-light"
+        light="type: spot; intensity: 0; color: #FFF; angle: 30"
+        position="0 5 -4"
+        rotation="-90 0 0"
+        light-controller="role: focus"
+      ></a-entity>
+
+      <!-- Accessibility Menu UI (Spatial) -->
+      <a-entity
+        id="accessibility-menu"
+        position="-2 1.5 -2.5"
+        rotation="0 45 0"
+      >
+        <a-entity
+          class="interactable"
+          geometry="primitive: plane; width: 1.5; height: 0.5"
+          material="color: #222"
+          text="value: ALTO CONTRASTE: OFF; align: center; width: 3"
+          accessibility-btn="type: contrast"
+          id="btn-contrast"
+        >
+        </a-entity>
+        <a-entity
+          class="interactable"
+          geometry="primitive: plane; width: 1.5; height: 0.5"
+          material="color: #222"
+          text="value: SUBTITULOS: OFF; align: center; width: 3"
+          position="0 -0.6 0"
+          accessibility-btn="type: subtitles"
+          id="btn-subtitles"
+        >
+        </a-entity>
+      </a-entity>
+
+      <!-- Spatial Subtitles Layer -->
+      <a-entity
+        id="spatial-subtitle"
+        visible="false"
+        text="value: [Sonido de maquinaria pesada]; align: center; color: white"
+        position="0 0.5 -3"
+        scale="2 2 2"
+      >
+      </a-entity>
+
+      <!-- Camera -->
+      <a-entity camera look-controls position="0 1.6 0">
+        <a-cursor
+          fuse="true"
+          fuse-timeout="1000"
+          raycaster="objects: .interactable"
+          material="color: white; shader: flat"
+        ></a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

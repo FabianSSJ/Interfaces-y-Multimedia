@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #000;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#ui-overlay {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  color: white;
+  pointer-events: none;
+}
+
+.performance-status {
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Base styles for potential 2D buttons in the future */
+.btn-2d {
+  pointer-events: auto;
+  background: #333;
+  color: white;
+  border: 1px solid #555;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-2d:hover {
+  background: #444;
+}
