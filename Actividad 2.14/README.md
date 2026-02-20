@@ -12,7 +12,6 @@ Este proyecto es un entorno XR interactivo desarrollado con A-Frame para la asig
 
 ## Enlaces
 
-- **Video Demostrativo (Accesibilidad)**: [PONER_AQUÍ_EL_ENLACE_A_TU_VIDEO]
 - **Informe Técnico**: Consulte el archivo `performance_table.md` para la auditoría de rendimiento.
 
 ## Estructura
